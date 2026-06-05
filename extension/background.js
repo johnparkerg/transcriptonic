@@ -359,21 +359,6 @@ chrome.runtime.onInstalled.addListener(() => {
             reRegisterContentScripts()
         })
 
-        chrome.storage.local.get(["meetings"], function (resultLocalUntyped) {
-            const resultLocal = /** @type {ResultLocal} */ (resultLocalUntyped)
-
-            const shouldNotify = resultLocal.meetings?.some((meeting) => (meeting.meetingSoftware === "Teams" || meeting.meetingSoftware === "Zoom"))
-
-            if (shouldNotify) {
-                chrome.notifications.create({
-                    type: "basic",
-                    iconUrl: "icon.png",
-                    title: "IMPORTANT and sorry!",
-                    message: "Please re-enable Teams/Zoom from the extension popup. It might accidentally disabled a few hours ago in the recent update :("
-                })
-            }
-        })
-
         checkAndCreateAlarm()
     })
 })

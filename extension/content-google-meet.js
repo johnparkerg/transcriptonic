@@ -163,8 +163,7 @@ function meetingRoutines(uiType) {
     // Re attaches the transcript observer. Used at startup and whenever Meet replaces the captions region (CC toggle / language change).
     /** @param {Element} node */
     function attachTranscriptObserver(node) {
-      // Flush any in-flight buffer so text captured before the discontinuity
-      // is preserved and not merged with the post-reattach captions.
+      // Flush any in-flight buffer so text captured before the discontinuity is preserved and not merged with the post-reattach captions.
       if ((personNameBuffer !== "") && (transcriptTextBuffer !== "")) {
         pushBufferToTranscript()
       }
